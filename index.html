@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil</title>
+    <style>
+        /* Styles de base */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000, #111, #222, #000);
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Cercles flottants animés */
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .circle1 { width: 100px; height: 100px; top: 10%; left: 15%; animation-duration: 8s; }
+        .circle2 { width: 150px; height: 150px; top: 20%; left: 70%; animation-duration: 10s; }
+        .circle3 { width: 120px; height: 120px; top: 40%; left: 50%; animation-duration: 12s; }
+        .circle4 { width: 90px; height: 90px; top: 70%; left: 20%; animation-duration: 14s; }
+        .circle5 { width: 80px; height: 80px; top: 50%; left: 80%; animation-duration: 9s; }
+        .circle6 { width: 60px; height: 60px; top: 30%; left: 10%; animation-duration: 11s; }
+        .circle7 { width: 200px; height: 200px; top: 60%; left: 60%; animation-duration: 15s; }
+        .circle8 { width: 140px; height: 140px; top: 25%; left: 40%; animation-duration: 13s; }
+        .circle9 { width: 170px; height: 170px; top: 75%; left: 30%; animation-duration: 16s; }
+        .circle10 { width: 130px; height: 130px; top: 15%; left: 90%; animation-duration: 18s; }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Menu Hamburger */
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .menu div {
+            width: 35px;
+            height: 5px;
+            background-color: #ff00ff;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        /* Menu coulissant */
+        .side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 9;
+        }
+
+        .side-menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #ff00ff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .side-menu a:hover {
+            color: #00ffff;
+        }
+
+        /* Réglette coulissante */
+        .side-menu.active {
+            width: 250px;
+        }
+
+        /* Effet de rotation pour les barres */
+        .menu.active div:nth-child(1) {
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+        .menu.active div:nth-child(2) {
+            opacity: 0;
+        }
+        .menu.active div:nth-child(3) {
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+
+        /* Section principale */
+        .main-section {
+            position: relative;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ff00ff;
+            margin-bottom: 20px;
+        }
+
+        /* Bouton de téléchargement */
+        .button {
+            background-color: #ff00ff;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #00ffff;
+        }
+
+        /* Case pour les certificats */
+        .certificate-case {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            margin: 10px auto;
+            width: 300px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .certificate-case:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .certificate-case img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .certificate-case a {
+            color: #00ffff;
+            text-decoration: none;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Hamburger -->
+    <div class="menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Réglette coulissante -->
+    <div id="sideMenu" class="side-menu">
+        <a href="index.html">Home</a>
+        <a href="credits.html">Credits</a>
+        <a href="support.html">Support</a>
+    </div>
+
+    <!-- Cercles flottants -->
+    <div class="floating-circle circle1"></div>
+    <div class="floating-circle circle2"></div>
+    <div class="floating-circle circle3"></div>
+    <div class="floating-circle circle4"></div>
+    <div class="floating-circle circle5"></div>
+    <div class="floating-circle circle6"></div>
+    <div class="floating-circle circle7"></div>
+    <div class="floating-circle circle8"></div>
+    <div class="floating-circle circle9"></div>
+    <div class="floating-circle circle10"></div>
+
+    <!-- Section principale -->
+    <div class="main-section">
+        <h1>JUL.HUB</h1>
+
+        <!-- Bouton DNS Profile -->
+        <button class="button" onclick="downloadDNSProfile()">DNS Profile</button>
+
+        <!-- Bouton E-sign Certificates -->
+        <button class="button" onclick="downloadEsignCerts()">E-sign Certificates</button>
+
+        <p>E-sign with some certificates</p>
+
+        <!-- Cases pour les certificats -->
+        <div class="certificate-case">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <a href="https://ipa.ipasign.cc:2052/download/c82b2729-acd4-5299-c81c-6681e33d831f/20240921003644836">ANBANG INSURANCE LTD</a>
+        </div>
+        <div class="certificate-case">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <a href="https://ipa.ipasign.cc:2052/download/6b9bb66b-bce9-c497-328f-b174784d514b/20240921003829620">Bank of Chongqing Co.,Ltd</a>
+        </div>
+        <div class="certificate-case">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <a href="https://ipa.ipasign.cc:2052/download/e3cd4d33-0439-fcde-7630-efbc0d937daa/20240921003648040">China Development Bank</a>
+        </div>
+        <div class="certificate-case">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <a href="https://ipa.ipasign.cc:2052/download/7cf0f897-27e5-23da-6d2d-07ef993622b4/20240921003649696">China Life Insurance Company</a>
+        </div>
+        <div class="certificate-case">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <a href="https://ipa.ipasign.cc:2052/download/da2dd2c1-156a-b1ff-6e9e-e846c8c140e3/20240921003649423">China Minsheng Bank</a>
+        </div>
+        <div class="certificate-case">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <a href="https://ipa.ipasign.cc:2052/download/5ffec024-6b30-ef18-11c6-74b0c2f23895/20240921003648601">China Pacific Insurance Group</a>
+        </div>
+    </div>
+
+    <!-- Script pour le menu et les barres -->
+    <script>
+        // Fonction pour ouvrir/fermer le menu
+        function toggleMenu() {
+            var menu = document.getElementById('sideMenu');
+            var burger = document.querySelector('.menu');
+            menu.classList.toggle('active');
+            burger.classList.toggle('active');
+        }
+
+        // Fonctions pour les boutons (exemple, à adapter selon le besoin)
+        function downloadDNSProfile() {
+            window.location.href = 'dns_profile_link';
+        }
+
+        function downloadEsignCerts() {
+            window.location.href = 'esign_certs_link';
+        }
+    </script>
+</body>
+</html>

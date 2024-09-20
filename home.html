@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - DNS Profile & E-sign Certificates</title>
+    <style>
+        /* Style de base */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000, #111, #222, #000);
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Cercles flottants animés */
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        /* Même définition des cercles flottants qu'avant */
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Menu hamburger */
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .menu div {
+            width: 35px;
+            height: 5px;
+            background-color: #ff00ff;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 9;
+        }
+
+        .side-menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #ff00ff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .side-menu a:hover {
+            color: #00ffff;
+        }
+
+        /* Section DNS Profile et E-sign Certificates */
+        .dns-section {
+            padding: 20px;
+            color: white;
+            position: relative;
+            text-align: center;
+        }
+
+        .dns-box, .esign-box {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 15px;
+            display: inline-block;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .dns-box span, .esign-box span {
+            color: #00ffff;
+            font-size: 24px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .dns-box span:hover, .esign-box span:hover {
+            text-decoration: underline;
+        }
+
+        /* Section des certificats */
+        .certificates-section {
+            color: white;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .certificate-box {
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            width: 350px;
+        }
+
+        .certificate-box img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .certificate-box span {
+            color: #00ffff;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .certificate-box:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Hamburger -->
+    <div class="menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Réglette coulissante -->
+    <div id="sideMenu" class="side-menu">
+        <a href="index.html">Home</a>
+        <a href="credits.html">Credits</a>
+        <a href="support.html">Support</a>
+    </div>
+
+    <!-- Cercles flottants -->
+    <div class="floating-circle circle1"></div>
+    <div class="floating-circle circle2"></div>
+    <!-- Ajoute les autres cercles ici -->
+
+    <!-- Section DNS Profile et E-sign Certificates -->
+    <div class="dns-section">
+        <div class="dns-box" onclick="downloadDNSProfile()">
+            <span>DNS Profile</span>
+        </div>
+        <div class="esign-box" onclick="downloadEsignCerts()">
+            <span>E-sign Certificates</span>
+        </div>
+        <p>E-sign with some certificates</p>
+    </div>
+
+    <!-- Section des certificats -->
+    <div class="certificates-section">
+        <div class="certificate-box" onclick="downloadCertificate('https://ipa.ipasign.cc:2052/download/c82b2729-acd4-5299-c81c-6681e33d831f/20240921003644836')">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <span>ANBANG INSURANCE LTD</span>
+        </div>
+        <div class="certificate-box" onclick="downloadCertificate('https://ipa.ipasign.cc:2052/download/6b9bb66b-bce9-c497-328f-b174784d514b/20240921003829620')">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <span>Bank of Chongqing Co.,Ltd</span>
+        </div>
+        <div class="certificate-box" onclick="downloadCertificate('https://ipa.ipasign.cc:2052/download/e3cd4d33-0439-fcde-7630-efbc0d937daa/20240921003233799')">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <span>China Continent Property Casualty Insurance Company Ltd</span>
+        </div>
+        <div class="certificate-box" onclick="downloadCertificate('https://ipa.ipasign.cc:2052/download/7c21d723-4347-e17d-be4a-7aedde1f948f/20240921003932011')">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <span>China Mobile Communications Corporation</span>
+        </div>
+        <div class="certificate-box" onclick="downloadCertificate('https://ipa.ipasign.cc:2052/download/2653d320-30e9-9011-7a4e-42bbd86ee866/20240921004029497')">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <span>Rizhao Sunday Power Generation Co., Ltd</span>
+        </div>
+        <div class="certificate-box" onclick="downloadCertificate('https://ipa.ipasign.cc:2052/download/567fe771-bdfe-8547-d933-35399e9de263/20240921004147036')">
+            <img src="https://cdn.bio.link/uploads/profile_pictures/2023-09-07/7oiJkygBgyjYIx0REqyL0MzW4whjbHYs.png" alt="Logo">
+            <span>Zhuhaishi ShijiXintong Network Technology Co., Ltd</span>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour ouvrir/fermer le menu
+        function toggleMenu() {
+            var menu = document.getElementById('sideMenu');
+            var burger = document.querySelector('.menu');
+            menu.classList.toggle('active');
+            burger.classList.toggle('active');
+        }
+
+        // Fonction pour rediriger vers le lien du fichier DNS Profile
+        function downloadDNSProfile() {
+            window.location.href = "https://github.com/TheRealXORA/iOS-Sideloading/raw/Releases/iOS%20Exploiters%20/Domain%20Name%20Systems%20/Main.Mobileprovision";
+        }
+
+        // Fonction pour télécharger le fichier Esign Certs
+        function downloadEsignCerts() {
+            window.location.href = "https://github.com/esigncert/khoindvn/raw/refs/heads/main/document/DNS/Esign-Certs.zip";
+        }
+
+        // Fonction pour rediriger vers les certificats
+        function downloadCertificate(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

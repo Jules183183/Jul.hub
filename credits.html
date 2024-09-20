@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits</title>
+    <style>
+        /* Style de base */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000, #111, #222, #000);
+            font-family: 'Arial', sans-serif;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Cercles flottants animés */
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Positionnement aléatoire des bulles */
+        .circle1 { width: 100px; height: 100px; top: 10%; left: 5%; animation-duration: 7s; }
+        .circle2 { width: 80px; height: 80px; top: 20%; right: 10%; animation-duration: 6s; }
+        .circle3 { width: 120px; height: 120px; bottom: 15%; left: 15%; animation-duration: 9s; }
+        .circle4 { width: 90px; height: 90px; bottom: 10%; right: 10%; animation-duration: 7s; }
+        .circle5 { width: 140px; height: 140px; top: 5%; right: 25%; animation-duration: 8s; }
+        .circle6 { width: 110px; height: 110px; bottom: 30%; left: 25%; animation-duration: 9s; }
+        .circle7 { width: 130px; height: 130px; top: 50%; right: 5%; animation-duration: 10s; }
+        .circle8 { width: 150px; height: 150px; bottom: 5%; right: 35%; animation-duration: 12s; }
+        .circle9 { width: 80px; height: 80px; top: 15%; left: 50%; animation-duration: 8s; }
+        .circle10 { width: 100px; height: 100px; bottom: 25%; left: 40%; animation-duration: 7s; }
+
+        /* Conteneur de crédits */
+        .credits-container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #00ffff;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #00ffff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .discord-button {
+            background-color: #5865F2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .discord-button:hover {
+            background-color: #404EED;
+        }
+
+        /* Menu Hamburger */
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 11;
+        }
+
+        .menu div {
+            width: 35px;
+            height: 5px;
+            background-color: #ff00ff;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        /* Menu coulissant */
+        .side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 10;
+        }
+
+        .side-menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #ff00ff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .side-menu a:hover {
+            color: #00ffff;
+        }
+
+        /* Réglette coulissante */
+        .side-menu.active {
+            width: 250px;
+        }
+
+        /* Effet de rotation pour les barres */
+        .menu.active div:nth-child(1) {
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+        .menu.active div:nth-child(2) {
+            opacity: 0;
+        }
+        .menu.active div:nth-child(3) {
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Hamburger -->
+    <div class="menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Réglette coulissante -->
+    <div id="sideMenu" class="side-menu">
+        <a href="index.html">Home</a>
+        <a href="credits.html">Credits</a>
+        <a href="support.html">Support</a>
+    </div>
+
+    <!-- Cercles flottants -->
+    <div class="floating-circle circle1"></div>
+    <div class="floating-circle circle2"></div>
+    <div class="floating-circle circle3"></div>
+    <div class="floating-circle circle4"></div>
+    <div class="floating-circle circle5"></div>
+    <div class="floating-circle circle6"></div>
+    <div class="floating-circle circle7"></div>
+    <div class="floating-circle circle8"></div>
+    <div class="floating-circle circle9"></div>
+    <div class="floating-circle circle10"></div>
+
+    <!-- Conteneur des crédits -->
+    <div class="credits-container">
+        <h1>Credits</h1>
+        <p>- Credit to X_ora :</p>
+        <a href="https://discord.gg/vuHtSpPh" target="_blank" class="discord-button">Join X_ora's Discord Server</a>
+        <p>- khoindvn</p>
+        <p>- ChatGPT</p>
+    </div>
+
+    <script>
+        // Fonction pour ouvrir/fermer le menu
+        function toggleMenu() {
+            var menu = document.getElementById('sideMenu');
+            var burger = document.querySelector('.menu');
+            menu.classList.toggle('active');
+            burger.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

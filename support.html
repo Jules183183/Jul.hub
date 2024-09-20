@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Page</title>
+    <style>
+        /* Style de base */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000, #111, #222, #000);
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Cercle flottant animé */
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .circle1 { width: 100px; height: 100px; top: 10%; left: 15%; animation-duration: 8s; }
+        .circle2 { width: 150px; height: 150px; top: 20%; left: 70%; animation-duration: 10s; }
+        .circle3 { width: 120px; height: 120px; top: 40%; left: 50%; animation-duration: 12s; }
+        .circle4 { width: 90px; height: 90px; top: 70%; left: 20%; animation-duration: 14s; }
+        .circle5 { width: 80px; height: 80px; top: 50%; left: 80%; animation-duration: 9s; }
+        .circle6 { width: 60px; height: 60px; top: 30%; left: 10%; animation-duration: 11s; }
+        .circle7 { width: 200px; height: 200px; top: 60%; left: 60%; animation-duration: 15s; }
+        .circle8 { width: 140px; height: 140px; top: 25%; left: 40%; animation-duration: 13s; }
+        .circle9 { width: 170px; height: 170px; top: 75%; left: 30%; animation-duration: 16s; }
+        .circle10 { width: 130px; height: 130px; top: 15%; left: 90%; animation-duration: 18s; }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Menu (hamburger) */
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .menu div {
+            width: 35px;
+            height: 5px;
+            background-color: #ff00ff;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        /* Menu coulissant */
+        .side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 9;
+        }
+
+        .side-menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #ff00ff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .side-menu a:hover {
+            color: #00ffff;
+        }
+
+        /* Réglette coulissante */
+        .side-menu.active {
+            width: 250px;
+        }
+
+        /* Effet de rotation pour les barres */
+        .menu.active div:nth-child(1) {
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+        .menu.active div:nth-child(2) {
+            opacity: 0;
+        }
+        .menu.active div:nth-child(3) {
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+
+        /* Section Support */
+        .support-section {
+            padding: 20px;
+            color: white;
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            max-width: 400px;
+        }
+
+        .support-box {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 2px solid #00ffff; /* Bord bleu */
+            border-radius: 15px; /* Coins arrondis */
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .support-box .discord-logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .support-box a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        .support-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Hamburger -->
+    <div class="menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Réglette coulissante -->
+    <div id="sideMenu" class="side-menu">
+        <a href="index.html">Home</a>
+        <a href="credits.html">Credits</a>
+        <a href="support.html">Support</a>
+    </div>
+
+    <!-- Cercles flottants -->
+    <div class="floating-circle circle1"></div>
+    <div class="floating-circle circle2"></div>
+    <div class="floating-circle circle3"></div>
+    <div class="floating-circle circle4"></div>
+    <div class="floating-circle circle5"></div>
+    <div class="floating-circle circle6"></div>
+    <div class="floating-circle circle7"></div>
+    <div class="floating-circle circle8"></div>
+    <div class="floating-circle circle9"></div>
+    <div class="floating-circle circle10"></div>
+
+    <!-- Section Support -->
+    <div class="support-section">
+        <h2>Support</h2>
+        <p>If you encounter any problems, please contact this Discord username:</p>
+        <div class="support-box">
+            <!-- Remplace cette image par le lien que tu souhaites insérer -->
+            <img class="discord-logo" src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0a69f118df70ad7828d4_icon_clyde_blurple_RGB.svg" alt="Discord Logo">
+            <a href="https://discord.gg/UYkBmpRm" target="_blank">https://discord.gg/UYkBmpRm</a>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour ouvrir/fermer le menu
+        function toggleMenu() {
+            var menu = document.getElementById('sideMenu');
+            var burger = document.querySelector('.menu');
+            menu.classList.toggle('active');
+            burger.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
